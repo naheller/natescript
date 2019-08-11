@@ -6,9 +6,9 @@
  */
 
 import React from 'react'
-import { string, object, arrayOf } from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import { string, object, arrayOf } from 'prop-types'
 
 function SEO({ description, lang, meta, title }) {
     const { site } = useStaticQuery(
@@ -30,59 +30,59 @@ function SEO({ description, lang, meta, title }) {
     return (
         <Helmet
             htmlAttributes={{
-                lang,
+                lang
             }}
             title={title}
             titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[
                 {
                     name: `description`,
-                    content: metaDescription,
+                    content: metaDescription
                 },
                 {
                     property: `og:title`,
-                    content: title,
+                    content: title
                 },
                 {
                     property: `og:description`,
-                    content: metaDescription,
+                    content: metaDescription
                 },
                 {
                     property: `og:type`,
-                    content: `website`,
+                    content: `website`
                 },
                 {
                     name: `twitter:card`,
-                    content: `summary`,
+                    content: `summary`
                 },
                 {
                     name: `twitter:creator`,
-                    content: site.siteMetadata.author,
+                    content: site.siteMetadata.author
                 },
                 {
                     name: `twitter:title`,
-                    content: title,
+                    content: title
                 },
                 {
                     name: `twitter:description`,
-                    content: metaDescription,
-                },
+                    content: metaDescription
+                }
             ].concat(meta)}
         />
     )
-}
-
-SEO.defaultProps = {
-    lang: `en`,
-    meta: [],
-    description: ``,
 }
 
 SEO.propTypes = {
     description: string,
     lang: string,
     meta: arrayOf(object),
-    title: string.isRequired,
+    title: string.isRequired
+}
+
+SEO.defaultProps = {
+    lang: `en`,
+    meta: [],
+    description: ``
 }
 
 export default SEO
