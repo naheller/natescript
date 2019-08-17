@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: `NateScript`,
+        title: `Nate.js`,
         description: `Personal website`,
         author: `@natescript`
     },
