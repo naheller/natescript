@@ -5,16 +5,13 @@ import { Link } from 'gatsby'
 
 import ThemeContext from '../context/ThemeContext'
 
-const StyledButton = styled.div`
+const StyledButton = styled.button`
     width: max-content;
-    margin: 1rem;
     padding: 0.5rem 1rem;
-    color: ${props => props.theme.color};
-    background-color: ${props => props.theme.backgroundColor};
-    border: 0.05rem solid ${props => props.theme.borderColor};
-    border-radius: 0.25rem;
-    box-shadow: 0.05rem 0.05rem ${props => props.theme.boxShadowColor};
-    transition: all 0.2s;
+    color: ${({ theme }) => theme.color};
+    background-color: ${({ theme }) => theme.backgroundColor};
+    border: 0.05rem solid ${({ theme }) => theme.borderColor};
+    box-shadow: 0.05rem 0.05rem ${({ theme }) => theme.boxShadowColor};
     user-select: none;
     &:hover {
         cursor: pointer;
@@ -30,7 +27,7 @@ const StyledLink = styled(Link)`
     color: ${props => props.theme.color};
 `
 
-export const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick }) => {
     const { theme } = useContext(ThemeContext)
 
     return (
@@ -40,7 +37,7 @@ export const Button = ({ children, onClick }) => {
     )
 }
 
-export const ButtonLink = ({ children, linkPath }) => {
+const ButtonLink = ({ children, linkPath }) => {
     const { theme } = useContext(ThemeContext)
 
     return (
@@ -65,3 +62,5 @@ ButtonLink.propTypes = {
 Button.defaultProps = {
     onClick: () => {}
 }
+
+export { Button, ButtonLink }

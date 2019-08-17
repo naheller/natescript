@@ -1,7 +1,7 @@
 {
-  "name": "natescript",
-  "version": "0.1.0",
-  "description": "NateScript website",
+  "name": "natejs",
+  "version": "0.1.2",
+  "description": "Nate.js website",
   "author": "Nathan Heller",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",

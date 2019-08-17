@@ -1,34 +1,31 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { node } from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import ThemeContext from '../context/ThemeContext'
 import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
 
-const Layout = ({ children }) => {
-    const { isDark } = useContext(ThemeContext)
-
-    return (
-        <StaticQuery
-            query={graphql`
-                query SiteTitleQuery {
-                    site {
-                        siteMetadata {
-                            title
-                        }
+const Layout = ({ children }) => (
+    <StaticQuery
+        query={graphql`
+            query SiteTitleQuery {
+                site {
+                    siteMetadata {
+                        title
                     }
                 }
-            `}
-            render={data => (
-                <div className={isDark ? 'dark' : 'light'}>
-                    <Header siteTitle={data.site.siteMetadata.title} />
-                    {children}
-                    <footer>Footer</footer>
-                </div>
-            )}
-        />
-    )
-}
+            }
+        `}
+        render={data => (
+            <>
+                <Header siteTitle={data.site.siteMetadata.title} />
+                <Main>{children}</Main>
+                <Footer siteTitle={data.site.siteMetadata.title} />
+            </>
+        )}
+    />
+)
 
 Layout.propTypes = {
     children: node.isRequired

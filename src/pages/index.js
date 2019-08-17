@@ -8,9 +8,8 @@ import { ButtonLink } from '../components/Buttons'
 const IndexPage = () => (
     <Layout>
         <SEO title="Home" />
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
+        <h1>The home page</h1>
+        <p>Go build something great.</p>
         <div>
             <Image />
         </div>

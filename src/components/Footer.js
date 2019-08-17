@@ -5,7 +5,7 @@ import { string } from 'prop-types'
 import FlexContainer from './FlexContainer'
 import ThemeContext from '../context/ThemeContext'
 
-const StyledHeader = styled.header`
+const StyledFooter = styled.footer`
     width: 100%;
     height: 4rem;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -14,11 +14,11 @@ const StyledHeader = styled.header`
     }
 `
 
-const Header = ({ siteTitle }) => {
+const Footer = ({ siteTitle }) => {
     const { isDark, toggleDark, theme } = useContext(ThemeContext)
 
     return (
-        <StyledHeader theme={theme}>
+        <StyledFooter theme={theme}>
             <FlexContainer
                 flexDirection="row"
                 justifyContent="space-between"
@@ -29,12 +29,12 @@ const Header = ({ siteTitle }) => {
                     {isDark ? `Light mode ☀` : `Dark mode ☾`}
                 </button>
             </FlexContainer>
-        </StyledHeader>
+        </StyledFooter>
     )
 }
 
-Header.propTypes = {
+Footer.propTypes = {
     siteTitle: string.isRequired
 }
 
-export default Header
+export default Footer
