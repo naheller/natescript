@@ -7,18 +7,16 @@ import ThemeContext from '../context/ThemeContext'
 
 const StyledButton = styled.button`
     width: max-content;
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 1.35rem;
     color: ${({ theme }) => theme.color};
     background-color: ${({ theme }) => theme.backgroundColor};
-    border: 0.05rem solid ${({ theme }) => theme.borderColor};
-    box-shadow: 0.05rem 0.05rem ${({ theme }) => theme.boxShadowColor};
+    border: ${({ theme }) => `${theme.borderWidthRem}rem solid ${theme.borderColor}`};
+    border-radius: 2rem;
     user-select: none;
     &:hover {
         cursor: pointer;
     }
     &:active {
-        transform: translate(0.05rem, 0.05rem);
-        box-shadow: 0 0;
     }
 `
 
@@ -41,11 +39,9 @@ const ButtonLink = ({ children, linkPath }) => {
     const { theme } = useContext(ThemeContext)
 
     return (
-        <Button>
-            <StyledLink theme={theme} to={linkPath}>
-                {children}
-            </StyledLink>
-        </Button>
+        <StyledLink theme={theme} to={linkPath}>
+            <Button>{children}</Button>
+        </StyledLink>
     )
 }
 

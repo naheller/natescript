@@ -7,9 +7,11 @@ import ThemeContext from '../context/ThemeContext'
 
 const StyledHeader = styled.header`
     width: 100%;
-    height: 4rem;
+    height: ${({ theme }) => theme.headerHeightRem}rem;
     background-color: ${({ theme }) => theme.backgroundColor};
-    h1 {
+    h3 {
+        margin: 0;
+        user-select: none;
         color: ${({ theme }) => theme.color};
     }
 `
@@ -19,15 +21,8 @@ const Header = ({ siteTitle }) => {
 
     return (
         <StyledHeader theme={theme}>
-            <FlexContainer
-                flexDirection="row"
-                justifyContent="space-between"
-                alignItems="center"
-            >
-                <h1 style={{ margin: 0 }}>{siteTitle}</h1>
-                <button type="button" onClick={toggleDark}>
-                    {isDark ? `Light mode ☀` : `Dark mode ☾`}
-                </button>
+            <FlexContainer flexDirection="row" justifyContent="space-between" alignItems="center">
+                <h3 onClick={toggleDark}>{`${isDark ? `☾` : `☀`} ${siteTitle}`}</h3>
             </FlexContainer>
         </StyledHeader>
     )
