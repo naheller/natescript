@@ -12,8 +12,7 @@ const defaultContextState = {
 const ThemeContext = createContext(defaultContextState)
 
 // Need macOS Mojave + Safari Technology Preview Release 68 to test this currently.
-const supportsDarkMode = () =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches === true
+const supportsDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches === true
 
 const ThemeProvider = ({ children }) => {
     const [isDark, setDark] = useState(defaultContextState.isDark)

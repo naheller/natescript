@@ -1,20 +1,21 @@
 const themeShared = {
     headerHeightRem: 4,
-    footerHeightRem: 4
+    footerHeightRem: 4,
+    borderWidthRem: 0.1
 }
 
 export const themeDark = {
-    color: 'white',
-    backgroundColor: 'black',
-    borderColor: 'white',
-    boxShadowColor: 'white',
+    color: '#f2f2f2',
+    backgroundColor: '#0c0c0c',
+    borderColor: '#f2f2f2',
+    boxShadowColor: '#f2f2f2',
     ...themeShared
 }
 
 export const themeLight = {
-    color: 'black',
-    backgroundColor: 'white',
-    borderColor: 'black',
-    boxShadowColor: 'black',
+    color: '#0c0c0c',
+    backgroundColor: '#f2f2f2',
+    borderColor: '#0c0c0c',
+    boxShadowColor: '#0c0c0c',
     ...themeShared
 }
