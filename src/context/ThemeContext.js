@@ -1,52 +1,41 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState } from 'react'
 import { node } from 'prop-types'
 
 import { themeLight, themeDark } from '../utils/constants'
 
+const hourOfDay = new Date().getHours()
+const isNight = hourOfDay <= 6 || hourOfDay >= 18
+
 const defaultContextState = {
-    isDark: false,
-    toggleDark: () => {},
-    theme: themeLight
+  isDark: isNight,
+  toggleDark: () => {},
+  theme: themeLight
 }
 
 const ThemeContext = createContext(defaultContextState)
 
-// Need macOS Mojave + Safari Technology Preview Release 68 to test this currently.
-const supportsDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches === true
-
 const ThemeProvider = ({ children }) => {
-    const [isDark, setDark] = useState(defaultContextState.isDark)
+  const [isDark, setDark] = useState(defaultContextState.isDark)
 
-    useEffect(() => {
-        const storedDark = JSON.parse(localStorage.getItem('dark'))
+  const toggleDark = () => {
+    setDark(!isDark)
+  }
 
-        if (storedDark) {
-            setDark(storedDark)
-        } else if (supportsDarkMode()) {
-            setDark(true)
-        }
-    }, [])
-
-    const toggleDark = () => {
-        localStorage.setItem('dark', JSON.stringify(!isDark))
-        setDark(!isDark)
-    }
-
-    return (
-        <ThemeContext.Provider
-            value={{
-                isDark,
-                toggleDark,
-                theme: isDark ? themeDark : themeLight
-            }}
-        >
-            {children}
-        </ThemeContext.Provider>
-    )
+  return (
+    <ThemeContext.Provider
+      value={{
+        isDark,
+        toggleDark,
+        theme: isDark ? themeDark : themeLight
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 ThemeProvider.propTypes = {
-    children: node.isRequired
+  children: node.isRequired
 }
 
 export default ThemeContext
