@@ -1,8 +1,5 @@
-const hourOfDay = new Date().getHours()
-const isNight = hourOfDay <= 6 || hourOfDay >= 18
-
-const primaryColor = isNight ? '#0c0c0c' : '#f2f2f2'
-const secondaryColor = isNight ? '#f2f2f2' : '#0c0c0c'
+const dark = '#0c0c0c'
+const light = '#f2f2f2'
 
 const themeShared = {
   headerHeightRem: 4,
@@ -11,17 +8,17 @@ const themeShared = {
 }
 
 export const themeDark = {
-  color: secondaryColor,
-  backgroundColor: primaryColor,
-  borderColor: secondaryColor,
-  boxShadowColor: secondaryColor,
+  color: light,
+  backgroundColor: dark,
+  borderColor: light,
+  boxShadowColor: light,
   ...themeShared
 }
 
 export const themeLight = {
-  color: primaryColor,
-  backgroundColor: secondaryColor,
-  borderColor: primaryColor,
-  boxShadowColor: primaryColor,
+  color: dark,
+  backgroundColor: light,
+  borderColor: dark,
+  boxShadowColor: dark,
   ...themeShared
 }

@@ -8,8 +8,7 @@ const isNight = hourOfDay <= 6 || hourOfDay >= 18
 
 const defaultContextState = {
   isDark: isNight,
-  toggleDark: () => {},
-  theme: themeLight
+  toggleDark: () => {}
 }
 
 const ThemeContext = createContext(defaultContextState)
